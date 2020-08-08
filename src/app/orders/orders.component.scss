@@ -1,0 +1,22 @@
+@import "node_modules/bootstrap/scss/bootstrap.scss";
+
+.container {
+  text-align: center;
+  padding: 1em;
+}
+
+.show-jobs {
+  //float: right;
+  height: auto;
+  align-items: center;
+
+  table {
+    width: 100%;
+  }
+}
+
+.title {
+  text-align: center;
+  justify-content: center;
+}
+
