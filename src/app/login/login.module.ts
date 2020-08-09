@@ -1,11 +1,12 @@
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MaterialModule } from '@app/material.module';
-import { AboutRoutingModule } from './about-routing.module';
-import { AboutComponent } from './about.component';
+import { AboutRoutingModule } from './login-routing.module';
+import {  LoginComponent } from './login.component';
 
 @NgModule({
   imports: [
@@ -13,10 +14,12 @@ import { AboutComponent } from './about.component';
     TranslateModule,
     FlexLayoutModule,
     MaterialModule,
-    AboutRoutingModule
+    AboutRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   declarations: [
-    AboutComponent
+    LoginComponent
   ]
 })
-export class AboutModule { }
+export class LoginModule { }

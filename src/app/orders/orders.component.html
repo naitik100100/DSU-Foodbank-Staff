@@ -1,0 +1,29 @@
+<div class="container">
+  
+    <div class="container-fluid mb-4">
+      <div class="container-fluid title">
+        <h1>All Orders</h1>
+      </div>
+      <div class="container-fluid show-orders">
+        <div class="container mat-elevation-z8">
+          <table class="table table-hover">
+            <tr>
+              <th *ngFor="let col of columns">
+                {{ col }}
+              </th>
+            </tr>
+            <tr *ngFor="let order of _orders; let i = index">
+              <td>{{ order.id }}</td>
+              <td>{{ order.bannerId  }}</td>
+              <td>{{ order.orderedDate  }}</td>
+              <td>{{ order.pickUpDate   }}</td>
+              <td>{{ order.orderstatus   }}</td>
+              <td>
+                <button class="btn btn-primary" color="primary" type="button" (click)="viewOrder(order.id)">View</button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+</div>
