@@ -1,4 +1,4 @@
-import { OrderModel, ItemModel } from './@shared/orders.model';
+import { OrderModel, ItemModel } from './@shared/model/orders.model';
 
 export let Orders: OrderModel[] = [
     {

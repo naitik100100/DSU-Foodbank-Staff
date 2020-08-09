@@ -1,8 +1,9 @@
+
 import { Component, OnInit } from '@angular/core';
 import { finalize } from 'rxjs/operators';
 
-import { OrderModel } from '@app/@shared/orders.model';
-import { OrdersService } from '@app/@shared/order.service';
+import { OrderModel } from '@app/@shared/model/orders.model';
+import { OrdersService } from '@app/@shared/service/order.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -28,8 +29,14 @@ export class OrdersComponent implements OnInit {
   }
 
   getOrders(){
-    this._orders = this.ordersService.getAllOrders();
-    console.log(this._orders);
+    // this._orders = this.ordersService.getAllOrders();
+    this.ordersService.getAllOrders().subscribe((data:OrderModel)=>{
+        console.log(data);
+        this._orders = data['Items']
+        console.log(this._orders)
+    })
+
+    //console.log(this._orders);
   }
 
   viewOrder(id: number)
