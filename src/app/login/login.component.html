@@ -6,27 +6,29 @@
       </mat-card-header>
       <mat-divider></mat-divider>
       <mat-card-content class=" pt-2 pb-2">
-        <form>
+        <form autocomplete="off"
+        [formGroup]="_loginForm"
+        (ngSubmit)="submit()">
           <div class="form-group">
-          <mat-form-field class="w-100">
-            <mat-label>User ID</mat-label>
-            <input matInput type="text" placeholder="Enter User ID" autocomplete="off" />
-          </mat-form-field>
-        </div>
-  <div class="form-group">
-    <mat-form-field >
-      <mat-label>Password</mat-label>
-      <input matInput type="password" placeholder="Enter Password" />
-    </mat-form-field>
-  </div>
-  <div class="form-group w-50 pt-4">
-    <button mat-raised-button color="primary" type="submit">
-      LOGIN
-    </button>
-  </div>
-  </form>
-  </mat-card-content>
-  </mat-card>
+            <mat-form-field class="w-100">
+              <mat-label>User ID</mat-label>
+              <input matInput type="text" [formControl]="id" placeholder="Enter User ID" autocomplete="off" />
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field>
+              <mat-label>Password</mat-label>
+              <input matInput type="password" [formControl]="password" placeholder="Enter Password" />
+            </mat-form-field>
+          </div>
+          <div class="form-group w-50 pt-4">
+            <button mat-raised-button color="primary" type="submit">
+              LOGIN
+            </button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
 
-</div>
+  </div>
 </div>

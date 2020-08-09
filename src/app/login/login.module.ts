@@ -1,3 +1,4 @@
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
@@ -13,7 +14,9 @@ import {  LoginComponent } from './login.component';
     TranslateModule,
     FlexLayoutModule,
     MaterialModule,
-    AboutRoutingModule
+    AboutRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   declarations: [
     LoginComponent

@@ -1,5 +1,9 @@
-export interface ItemModel{
+
+export interface UserModel{
     id: number,
-    itemname: string,
-    quantity: number
+    firstname: string,
+    emailId: string,
+    lastname: string,
+    password: string
+
 }
