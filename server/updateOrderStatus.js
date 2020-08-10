@@ -9,10 +9,11 @@ exports.handler = (event, context, callback) => {
         },
         UpdateExpression: "set orderstatus=:s",
         ExpressionAttributeValues: {
-            ":s": event.orderStatus
+            ":s": event.orderstatus
         }
     };
-    
+
+    console.log(params)
     docClient.update(params, function (err, data) {
         callback(err, data);
     });

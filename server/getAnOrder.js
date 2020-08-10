@@ -9,6 +9,7 @@ exports.handler = (event, context, callback) => {
         }
     };
 
+    console.log(params.key)
     docClient.get(params, function (err, data) {
         callback(err, data);
     });
