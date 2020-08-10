@@ -10,7 +10,7 @@ export interface OrderModel{
 
 export interface OrderDetailModel
 {
-    itemId: number,
+    id: number,
     quantity: number
 }
 

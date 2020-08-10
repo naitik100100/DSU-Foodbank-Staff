@@ -1,6 +1,9 @@
 
 import { Component, OnInit } from '@angular/core';
 import { finalize } from 'rxjs/operators';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialogWrapperComponent } from '@shared/mat-dialog-wrapper/mat-dialog-wrapper.component';
+
 
 
 import { Router, ActivatedRoute } from '@angular/router';
@@ -24,12 +27,18 @@ export class OrderDetailComponent implements OnInit {
   displayedColumns: string[] = ['name', 'quantity'];
   dataSource: MatTableDataSource<ItemModel>;
 
+  private _matDialogConfig: MatDialogConfig = {
+    minWidth: '250px',
+    minHeight: '200px',
+  };
 
   constructor(
     public itemsService: ItemsService,
     public ordersService: OrdersService,
     //public authService: AuthenticationService,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
+    private _matDialog: MatDialog,
+    public router: Router
   ) {
   }
 
@@ -65,7 +74,7 @@ export class OrderDetailComponent implements OnInit {
     }
 else{
     this.order.details.forEach(orderDetail => {
-      this.itemsService.getItem(orderDetail.itemId).subscribe((data: any) => {
+      this.itemsService.getItem(orderDetail.id).subscribe((data: any) => {
         if(data.Item == undefined){
           console.log('No item found')
           //alert('No Item Found for this order')
@@ -84,6 +93,10 @@ else{
   updateOrderStatus(status: string) {
     console.log(status);
     this.ordersService.updateOrderStatus(this.id, status).subscribe((res)=>{
+      const dialogConfig = this._matDialogConfig;
+            dialogConfig.data = { header: 'Success!', content: 'Status Updated successfully.' };
+            this._matDialog.open(MatDialogWrapperComponent, dialogConfig);
+            this.router.navigateByUrl('/orders');
       console.log('success')
     });
   

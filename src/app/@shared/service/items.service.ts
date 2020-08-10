@@ -24,6 +24,7 @@ export class ItemsService
 
     getItem(id:number): Observable<any>
     {
+        console.log(id);
         return this.httpClient.get(`${this.getUrl()}items/${id}`)
         //return Items.filter((item: { id: number; }) => item.id==id)[0]
     }

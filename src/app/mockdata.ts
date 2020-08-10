@@ -10,15 +10,15 @@ export let Orders: OrderModel[] = [
         deliveredDate: null,
         details: [
             {
-                itemId: 4,
+                id: 4,
                 quantity: 20
             },
             {
-                itemId: 3,
+                id: 3,
                 quantity: 20
             },
             {
-                itemId: 1,
+                id: 1,
                 quantity: 20
             },
         ]
@@ -31,15 +31,15 @@ export let Orders: OrderModel[] = [
         deliveredDate: null,
         details: [
             {
-                itemId: 4,
+                id: 4,
                 quantity: 20
             },
             {
-                itemId: 3,
+                id: 3,
                 quantity: 20
             },
             {
-                itemId: 1,
+                id: 1,
                 quantity: 20
             },
         ]

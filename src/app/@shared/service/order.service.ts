@@ -33,7 +33,7 @@ export class OrdersService {
 
     updateOrderStatus(id: number, status: string): Observable<any>
     {
-        return this.httpClient.put(`${this.getStaffUrl()}orders/${id}`, { orderstatus : status } )
+        return this.httpClient.put(`${this.getStaffUrl()}orders`, { id: id,orderstatus : status } )
     }
 
 

@@ -1,3 +1,4 @@
+import { MatDialogWrapperComponent } from '@shared/mat-dialog-wrapper/mat-dialog-wrapper.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -23,7 +24,7 @@ import { OrdersComponent } from './orders.component';
   ],
   declarations: [
     OrdersComponent,
-    OrderDetailComponent
+    OrderDetailComponent,
   ]
 })
 export class OrdersModule { }

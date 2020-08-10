@@ -13,6 +13,7 @@ import { ShellModule } from './shell/shell.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { OrdersModule } from './orders/orders.module';
+import { MAT_DIALOG_DEFAULT_OPTIONS, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @NgModule({
   imports: [
@@ -31,6 +32,8 @@ import { OrdersModule } from './orders/orders.module';
   ],
   declarations: [AppComponent],
   providers: [
+    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: true } },
+    { provide: MAT_DIALOG_DATA, useValue: {} },
   ],
   bootstrap: [AppComponent]
 })
