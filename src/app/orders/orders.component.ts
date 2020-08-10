@@ -5,6 +5,7 @@ import { finalize } from 'rxjs/operators';
 import { OrderModel } from '@app/@shared/model/orders.model';
 import { OrdersService } from '@app/@shared/service/order.service';
 import { Router } from '@angular/router';
+import { AuthService } from '@app/@shared/service/auth.service';
 
 @Component({
   selector: 'app-orders',
@@ -20,12 +21,14 @@ export class OrdersComponent implements OnInit {
   quote: string | undefined;
   isLoading = false;
 
-  constructor(public ordersService: OrdersService,public router: Router) { }
+  constructor(public ordersService: OrdersService,public router: Router,public auth:AuthService) { }
 
   ngOnInit() {
-    this.isLoading = true;
-    this.getOrders();
-    
+    console.log(localStorage.getItem('id'))
+      if(localStorage.getItem('id')==null){
+      this.router.navigate(['/login']);
+      }
+      this.getOrders();
   }
 
   getOrders(){

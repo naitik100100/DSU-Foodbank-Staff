@@ -5,10 +5,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { extract } from '@app/i18n';
 import { OrdersComponent } from './orders.component';
 import { Shell } from '@app/shell/shell.service';
+import { LoginComponent } from '@app/login/login.component';
 
 const routes: Routes = [
   Shell.childRoutes([
-    { path: '', redirectTo: '/orders', pathMatch: 'full' },
+    {path:'',component:LoginComponent},
     { path: 'orders', component: OrdersComponent, data: { title: extract('Orders') } },
     { path: 'orderdetail/:id', component: OrderDetailComponent, data: { title: extract('OrderDetail') } }
   ])

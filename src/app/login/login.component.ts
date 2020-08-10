@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { UserModel } from '@app/@shared/model/user.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '@app/@shared/service/user.service';
+import { AuthService } from '@app/@shared/service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +28,11 @@ export class LoginComponent implements OnInit {
   isLoggedIn = false
   version: string | null = environment.version;
 
-  constructor(public userService: UserService,public router: Router,private formBuilder: FormBuilder,private _matDialog: MatDialog,) { }
+  constructor(public service: AuthService,
+    public userService: UserService,
+    public router: Router,
+    private formBuilder: FormBuilder,
+    private _matDialog: MatDialog,) { }
 
   ngOnInit() {
     this._createLoginForm();
@@ -37,30 +42,30 @@ export class LoginComponent implements OnInit {
   submit(){
     if(this._loginForm.valid){
       //console.log('Id from form',this._loginForm.value.id)
-      this.getUser(this._loginForm.value.id);
+      this.service.getUser(this.id.value, this.password.value);
      
     }
   }
 
-  getUser(ID: number){
-    this.userService.getUser(this._loginForm.value.id).subscribe((data:UserModel)=>{
-      console.log(data);
-      this._user = data['Item']
-      console.log('id from database',this._user['id'])
-      if(this._loginForm.value.id == this._user['id'] && this._loginForm.value.password == this._user['password']){
-       this.isLoggedIn = true
-        this.router.navigateByUrl('/orders');
-      }
-      else{
-        const dialogConfig = this._matDialogConfig;
-            dialogConfig.data = { header: 'Failure!', content: 'Id or Password is wrong' };
-            this._matDialog.open(MatDialogWrapperComponent, dialogConfig);
+  // getUser(ID: number,Password: string){
+  //   this.userService.getUser(this._loginForm.value.id).subscribe((data:UserModel)=>{
+  //     console.log(data);
+  //     this._user = data['Item']
+  //     console.log('id from database',this._user['id'])
+  //     if(this._loginForm.value.id == this._user['id'] && this._loginForm.value.password == this._user['password']){
+  //      this.isLoggedIn = true
+  //       this.router.navigateByUrl('/orders');
+  //     }
+  //     else{
+  //       const dialogConfig = this._matDialogConfig;
+  //           dialogConfig.data = { header: 'Failure!', content: 'Id or Password is wrong' };
+  //           this._matDialog.open(MatDialogWrapperComponent, dialogConfig);
             
-        console.log('id or password is worng')
-      }
-  })
+  //       console.log('id or password is worng')
+  //     }
+  // })
 
-  }
+  // }
 
   get id() {
     return this._loginForm.controls.id;

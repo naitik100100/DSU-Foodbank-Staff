@@ -6,13 +6,19 @@
     <span class="title">{{title}}</span>
   </div>
   <div fxHide.lt-md>
-    <a class="brand" routerLink="/orders" translate>APP_NAME</a>
-    <button mat-button routerLink="/orders" routerLinkActive="active">
+    <a class="brand" [routerLink]="['/orders']" translate>APP_NAME</a>
+    <button mat-button [routerLink]="['/orders']" routerLinkActive="active">
       <span translate>Orders</span>
     </button>
-    <button mat-button routerLink="/login" routerLinkActive="active">
-      <span translate>Login</span>
+    <button mat-button [routerLink]="['']" routerLinkActive="active" *ngIf="status==false">
+      <span translate >Log In</span>
     </button>
+    <button mat-button [routerLink]="['']" routerLinkActive="active" (click)="logout()" *ngIf="status==true">
+      <span translate >Log Out</span>
+    </button>
+    <!-- <li *ngIf="status==false"> <a class="nav-item nav-link active" [routerLink]="['']">Login</a></li> 
+       <li *ngIf="status==true"> <a class="nav-item nav-link active"  [routerLink]="['']" (click)="logout()">Logout</a></li>  -->
+
   </div>
   <span fxFlex></span>
 </mat-toolbar>

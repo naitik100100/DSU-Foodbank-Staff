@@ -10,19 +10,19 @@
         [formGroup]="_loginForm"
         (ngSubmit)="submit()">
           <div class="form-group">
-            <mat-form-field class="w-100">
+            <mat-form-field class="w-50">
               <mat-label>User ID</mat-label>
-              <input matInput type="text" [formControl]="id" placeholder="Enter User ID" autocomplete="off" />
+              <input matInput type="number" [formControl]="id" placeholder="Enter User ID" autocomplete="off" />
             </mat-form-field>
           </div>
           <div class="form-group">
-            <mat-form-field>
+            <mat-form-field class="w-50">
               <mat-label>Password</mat-label>
               <input matInput type="password" [formControl]="password" placeholder="Enter Password" />
             </mat-form-field>
           </div>
-          <div class="form-group w-50 pt-4">
-            <button mat-raised-button color="primary" type="submit">
+          <div class="form-group w-100 pt-4 ml-6">
+            <button class="btn btn-primary" [disabled]="!_loginForm.valid" type="submit">
               LOGIN
             </button>
           </div>
