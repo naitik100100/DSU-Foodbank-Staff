@@ -1,3 +1,4 @@
+import { OrderDetailModel } from './../../@shared/model/orders.model';
 
 import { Component, OnInit } from '@angular/core';
 import { finalize } from 'rxjs/operators';
@@ -20,12 +21,13 @@ import { MatTableDataSource } from '@angular/material/table';
 export class OrderDetailComponent implements OnInit {
   id: number
   order: OrderModel
+  orderdetails : OrderDetailModel[]
   error = false
   selected: string
 
   orderItems: ItemModel[] = []
   displayedColumns: string[] = ['name', 'quantity'];
-  dataSource: MatTableDataSource<ItemModel>;
+  dataSource: MatTableDataSource<OrderDetailModel>;
 
   private _matDialogConfig: MatDialogConfig = {
     minWidth: '250px',
@@ -60,34 +62,12 @@ export class OrderDetailComponent implements OnInit {
 
   fetchOrder() {
     console.log('Fetching Order Details of: ' + this.id)
-    this.ordersService.getOrder(this.id).subscribe((data: OrderModel) => {
+    this.ordersService.getOrder(this.id).subscribe((data: any) => {
       this.order = data['Item']
+      this.orderdetails = this.order.details
+      this.initializeDataGrid(this.orderdetails)
       console.log('fetched order', this.order)
-      this.fetchOrderItems()
     })
-  }
-
-  fetchOrderItems() {
-
-    if(this.order.details.length == 0){
-      console.log("No items for this order")
-    }
-else{
-    this.order.details.forEach(orderDetail => {
-      this.itemsService.getItem(orderDetail.id).subscribe((data: any) => {
-        if(data.Item == undefined){
-          console.log('No item found')
-          //alert('No Item Found for this order')
-        }else{
-
-      
-        console.log('item fetched:', data.Item)
-        this.orderItems.push(data.Item)
-        this.initializeDataGrid()
-      }
-      })
-    })
-  }
   }
 
   updateOrderStatus(status: string) {
@@ -103,9 +83,9 @@ else{
   
 }
 
-initializeDataGrid()
+initializeDataGrid(orderItems: OrderDetailModel[])
 {
-  this.dataSource = new MatTableDataSource<ItemModel>(this.orderItems)
+  this.dataSource = new MatTableDataSource<OrderDetailModel>(orderItems)
 }
 
 

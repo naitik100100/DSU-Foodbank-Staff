@@ -1,50 +1,5 @@
 import { OrderModel, ItemModel } from './@shared/model/orders.model';
 
-export let Orders: OrderModel[] = [
-    {
-        id: 1,
-        bannerId: 'B00121212',
-        orderedDate: '11-11-2020',
-        pickUpDate: '12-11-2020',
-        orderstatus: 'ready',
-        deliveredDate: null,
-        details: [
-            {
-                id: 4,
-                quantity: 20
-            },
-            {
-                id: 3,
-                quantity: 20
-            },
-            {
-                id: 1,
-                quantity: 20
-            },
-        ]
-    },{
-        id: 2,
-        bannerId: 'B00123123',
-        orderedDate: '1-1-2020',
-        pickUpDate: '2-1-2020',
-        orderstatus: 'placed',
-        deliveredDate: null,
-        details: [
-            {
-                id: 4,
-                quantity: 20
-            },
-            {
-                id: 3,
-                quantity: 20
-            },
-            {
-                id: 1,
-                quantity: 20
-            },
-        ]
-    }
-]
 
 export let Items: ItemModel[] = [
     {

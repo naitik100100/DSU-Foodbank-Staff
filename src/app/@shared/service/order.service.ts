@@ -2,7 +2,6 @@ import { OrdersModule } from '../../orders/orders.module';
 
 import { Injectable } from '@angular/core';
 import { OrderModel } from '../model/orders.model';
-import { Orders } from '@app/mockdata';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@env/environment';
 import { Observable } from 'rxjs';

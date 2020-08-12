@@ -11,6 +11,7 @@ export interface OrderModel{
 export interface OrderDetailModel
 {
     id: number,
+    itemname: string,
     quantity: number
 }
 
